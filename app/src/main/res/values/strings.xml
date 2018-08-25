@@ -2,4 +2,8 @@
     <string name="app_name">RoomPersitanceExample</string>
     <string name="enter_details_button">Enter Details</string>
     <string name="show_users">Show Users</string>
+    <string name="name_hint">Enter name</string>
+    <string name="email_hint">Enter email address</string>
+    <string name="phone_hint">Enter phone number</string>
+    <string name="save_button">Save</string>
 </resources>
