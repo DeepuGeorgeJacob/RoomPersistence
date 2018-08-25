@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RoomPersitanceExample</string>
+    <string name="enter_details_button">Enter Details</string>
+    <string name="show_users">Show Users</string>
+</resources>
