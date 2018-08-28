@@ -1,12 +1,13 @@
 package app.newt.android.deepz.com.room.persitance.dao
 
 import android.arch.persistence.room.*
+import android.arch.persistence.room.OnConflictStrategy.ABORT
 import android.arch.persistence.room.OnConflictStrategy.REPLACE
 import app.newt.android.deepz.com.room.persitance.entities.User
 
 @Dao
 interface DataAccess {
-    @Insert
+    @Insert(onConflict = ABORT)
     fun insertUser(user: User)
 
     @Insert(onConflict = REPLACE)

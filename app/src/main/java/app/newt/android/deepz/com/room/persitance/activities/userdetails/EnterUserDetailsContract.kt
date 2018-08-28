@@ -9,6 +9,7 @@ interface EnterUserDetailsContract {
         fun getEmail(): String
         fun getPhoneNumber(): String
         fun showErrorMessage(error:String)
+        fun navigateToList()
     }
 
     interface Presenter : BasePresenter {

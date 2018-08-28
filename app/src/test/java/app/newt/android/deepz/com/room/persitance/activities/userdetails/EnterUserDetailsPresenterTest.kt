@@ -8,6 +8,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito.*
+import org.mockito.internal.util.MockUtil
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
@@ -56,6 +57,17 @@ class EnterUserDetailsPresenterTest {
         `when`(context.getString(R.string.phone_hint)).thenReturn("Enter phone number")
         presenter!!.onSaveInteracted()
         verify(view).showErrorMessage(context.getString(R.string.please) + " " + context.getString(R.string.phone_hint))
+
+    }
+    @Test
+    fun test_onSaveInteracted_save() {
+        `when`(view.getUsername()).thenReturn("Deepu")
+        `when`(view.getEmail()).thenReturn("123@gmail.com")
+        `when`(view.getPhoneNumber()).thenReturn("+919567688334")
+        `when`(context.getString(R.string.phone_hint)).thenReturn("Enter phone number")
+        presenter!!.onSaveInteracted()
+        verify(view).navigateToList()
+
 
     }
 

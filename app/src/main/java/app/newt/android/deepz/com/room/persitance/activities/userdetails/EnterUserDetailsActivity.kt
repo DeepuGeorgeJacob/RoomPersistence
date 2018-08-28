@@ -11,6 +11,7 @@ import app.newt.android.deepz.com.room.persitance.R
 
 class EnterUserDetailsActivity : AppCompatActivity(), EnterUserDetailsContract.View {
 
+
     private lateinit var presenter: EnterUserDetailsContract.Presenter
     private lateinit var nameView: EditText
     private lateinit var emailView:EditText
@@ -41,6 +42,9 @@ class EnterUserDetailsActivity : AppCompatActivity(), EnterUserDetailsContract.V
 
     override fun getPhoneNumber(): String {
         return phoneNumberView.text.toString()
+    }
+    override fun navigateToList() {
+
     }
 
     override fun showErrorMessage(error: String) {
