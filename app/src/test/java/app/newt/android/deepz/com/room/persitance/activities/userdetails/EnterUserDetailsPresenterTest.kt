@@ -3,23 +3,22 @@ package app.newt.android.deepz.com.room.persitance.activities.userdetails
 import android.content.Context
 import app.newt.android.deepz.com.archetecture.mvp.context.IContext
 import app.newt.android.deepz.com.room.persitance.R
+import app.newt.android.deepz.com.room.persitance.dao.DataAccess
+import app.newt.android.deepz.com.room.persitance.database.IDatabase
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.mockito.Mockito.*
-import org.mockito.internal.util.MockUtil
-import org.mockito.junit.MockitoJUnitRunner
 
-@RunWith(MockitoJUnitRunner::class)
 class EnterUserDetailsPresenterTest {
     private var presenter: EnterUserDetailsPresenter? = null
     private val view: EnterUserDetailsContract.View = mock(EnterUserDetailsContract.View::class.java)
     private val context: IContext = mock(IContext::class.java)
     private val cxt = mock(Context::class.java)
+    private val userDataBase = mock(IDatabase::class.java)
     @Before
     fun setUp() {
-        presenter = EnterUserDetailsPresenter(view, context)
+        presenter = EnterUserDetailsPresenter(view, context,userDataBase)
         `when`(context.getString(R.string.please) ).thenReturn("Please")
     }
 
@@ -64,7 +63,7 @@ class EnterUserDetailsPresenterTest {
         `when`(view.getUsername()).thenReturn("Deepu")
         `when`(view.getEmail()).thenReturn("123@gmail.com")
         `when`(view.getPhoneNumber()).thenReturn("+919567688334")
-        `when`(context.getString(R.string.phone_hint)).thenReturn("Enter phone number")
+        `when`(userDataBase.getDataAccess()).thenReturn(mock(DataAccess::class.java))
         presenter!!.onSaveInteracted()
         verify(view).navigateToList()
 
