@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import app.newt.android.deepz.com.room.persitance.R
 import app.newt.android.deepz.com.room.persitance.activities.userdetails.EnterUserDetailsActivity
+import app.newt.android.deepz.com.room.persitance.activities.userlist.UserListActivity
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.show_user_button -> {
                 //Show recycler view
+                startActivity(Intent(this,UserListActivity::class.java))
             }
 
         }

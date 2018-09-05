@@ -1,7 +1,7 @@
 package app.newt.android.deepz.com.room.persitance.activities.userdetails
 
-import android.util.Log
 import app.newt.android.deepz.com.archetecture.mvp.context.IContext
+import app.newt.android.deepz.com.archetecture.mvp.utils.isEmpty
 import app.newt.android.deepz.com.room.persitance.R
 import app.newt.android.deepz.com.room.persitance.database.IDatabase
 import app.newt.android.deepz.com.room.persitance.entities.User

@@ -1,24 +1,23 @@
 package app.newt.android.deepz.com.room.persitance.activities.userdetails
 
 import android.arch.persistence.room.Room
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import app.newt.android.deepz.com.archetecture.mvp.context.MVPContext
 import app.newt.android.deepz.com.room.persitance.R
+import app.newt.android.deepz.com.room.persitance.activities.main.BaseActivity
 import app.newt.android.deepz.com.room.persitance.database.UserDataBase
 
-class EnterUserDetailsActivity : AppCompatActivity(), EnterUserDetailsContract.View {
+class EnterUserDetailsActivity : BaseActivity(), EnterUserDetailsContract.View {
 
 
     private lateinit var presenter: EnterUserDetailsContract.Presenter
     private lateinit var nameView: EditText
     private lateinit var emailView:EditText
     private lateinit var phoneNumberView:EditText
-    private val DATABASE_NAME = "user_db"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_enter_user_details)
@@ -28,7 +27,7 @@ class EnterUserDetailsActivity : AppCompatActivity(), EnterUserDetailsContract.V
         findViewById<Button>(R.id.save).setOnClickListener {
             presenter.onSaveInteracted()
         }
-        EnterUserDetailsPresenter(this, MVPContext(this), Room.databaseBuilder(applicationContext, UserDataBase::class.java, DATABASE_NAME).fallbackToDestructiveMigration().build()).start()
+        EnterUserDetailsPresenter(this, MVPContext(this), getDataBase()).start()
     }
 
     override fun setPresenter(presenter: EnterUserDetailsContract.Presenter) {
