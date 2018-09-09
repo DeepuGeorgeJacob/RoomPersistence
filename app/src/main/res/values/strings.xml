@@ -7,4 +7,8 @@
     <string name="phone_hint">Enter phone number</string>
     <string name="save_button">Save</string>
     <string name="please">Please</string>
+    <string name="edit_delete_dialog_title">Database Action</string>
+    <string name="edit_delete_dialog_message">Choose your action</string>
+    <string name="edit_delete_dialog_edit_text">Edit</string>
+    <string name="edit_delete_dialog_delete_text">Delete</string>
 </resources>

@@ -9,14 +9,24 @@ import app.newt.android.deepz.com.room.persitance.entities.User
 
 class UserItemAdapter(userList: List<User>) : RecyclerView.Adapter<UserItemHolder>() {
     private val userList = userList
+    private var itemClickListener: ItemClickListener? = null
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserItemHolder {
         return UserItemHolder(LayoutInflater.from(parent.context).inflate(R.layout.user_list_item,parent,false))
+    }
+    fun removeDeletedUser(user:User) {
+        (userList as ArrayList<User>).remove(user)
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
         return userList.count()
     }
+     fun setClickListener(itemClickListener: ItemClickListener) {
+        this.itemClickListener = itemClickListener
+    }
+
 
     override fun onBindViewHolder(holder: UserItemHolder, position: Int) {
         val user = userList[position]
@@ -24,6 +34,13 @@ class UserItemAdapter(userList: List<User>) : RecyclerView.Adapter<UserItemHolde
         holder.email.text = user.email
         holder.phone.text = user.phonenumber
         holder.name.text = user.name
+        holder.card.setOnClickListener { 
+            itemClickListener!!.selectedItem(user)
+        }
 
     }
+
+    interface ItemClickListener {
+        fun selectedItem(user: User?)
+        }
 }

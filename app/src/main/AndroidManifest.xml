@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.userdetails.EnterUserDetailsActivity" />
-        <activity android:name=".activities.userlist.UserListActivity" />
+        <activity android:name=".activities.userlist.activity.UserListActivity" />
         <activity android:name=".activities.main.BaseActivity"></activity>
     </application>
 

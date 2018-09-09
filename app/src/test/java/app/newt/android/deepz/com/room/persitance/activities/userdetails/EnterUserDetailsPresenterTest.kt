@@ -45,7 +45,6 @@ class EnterUserDetailsPresenterTest {
         `when`(context.getString(R.string.email_hint)).thenReturn("Enter email address")
         presenter!!.onSaveInteracted()
         verify(view).showErrorMessage(context.getString(R.string.please) + " " + context.getString(R.string.email_hint))
-
     }
 
     @Test
@@ -66,8 +65,6 @@ class EnterUserDetailsPresenterTest {
         `when`(userDataBase.getDataAccess()).thenReturn(mock(DataAccess::class.java))
         presenter!!.onSaveInteracted()
         verify(view).navigateToList()
-
-
     }
 
     @After

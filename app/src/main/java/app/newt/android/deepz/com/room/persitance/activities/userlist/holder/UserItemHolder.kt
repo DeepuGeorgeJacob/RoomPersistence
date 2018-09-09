@@ -6,16 +6,10 @@ import android.widget.TextView
 import app.newt.android.deepz.com.room.persitance.R
 
 class UserItemHolder(v: View) : RecyclerView.ViewHolder(v) {
-    public lateinit var id: TextView
-    public lateinit var name: TextView
-    public lateinit var email: TextView
-    public lateinit var phone: TextView
-
-    init {
-        id = v.findViewById(R.id.id_tv)
-        name = v.findViewById(R.id.id_name)
-        phone = v.findViewById(R.id.id_phones)
-        email = v.findViewById(R.id.id_email)
-    }
+    var id: TextView = v.findViewById(R.id.id_tv)
+    var name: TextView = v.findViewById(R.id.id_name)
+    var email: TextView = v.findViewById(R.id.id_email)
+    var phone: TextView = v.findViewById(R.id.id_phones)
+    var card :View = v.findViewById(R.id.card_view)
 
 }
