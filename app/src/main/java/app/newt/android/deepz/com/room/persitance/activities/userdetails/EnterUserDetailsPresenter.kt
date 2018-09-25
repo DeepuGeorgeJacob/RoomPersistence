@@ -15,7 +15,7 @@ class EnterUserDetailsPresenter(view: EnterUserDetailsContract.View, context: IC
         view.setPresenter(this)
     }
 
-    override fun onSaveInteracted() {
+    override fun onSaveOrUpdateInteracted() {
         val username = view.getUsername()
         val email = view.getEmail()
         val phonenumber = view.getPhoneNumber()

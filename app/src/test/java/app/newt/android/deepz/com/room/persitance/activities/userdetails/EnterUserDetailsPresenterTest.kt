@@ -34,7 +34,7 @@ class EnterUserDetailsPresenterTest {
     fun test_onSaveInteracted_empty_username() {
         `when`(view.getUsername()).thenReturn(null)
         `when`(context.getString(R.string.name_hint)).thenReturn("Enter name")
-        presenter!!.onSaveInteracted()
+        presenter!!.onSaveOrUpdateInteracted()
         verify(view).showErrorMessage(context.getString(R.string.please) + " " + context.getString(R.string.name_hint))
 
     }
@@ -43,7 +43,7 @@ class EnterUserDetailsPresenterTest {
         `when`(view.getUsername()).thenReturn("Deepu")
         `when`(view.getEmail()).thenReturn(null)
         `when`(context.getString(R.string.email_hint)).thenReturn("Enter email address")
-        presenter!!.onSaveInteracted()
+        presenter!!.onSaveOrUpdateInteracted()
         verify(view).showErrorMessage(context.getString(R.string.please) + " " + context.getString(R.string.email_hint))
     }
 
@@ -53,7 +53,7 @@ class EnterUserDetailsPresenterTest {
         `when`(view.getEmail()).thenReturn("123@gmail.com")
         `when`(view.getPhoneNumber()).thenReturn(null)
         `when`(context.getString(R.string.phone_hint)).thenReturn("Enter phone number")
-        presenter!!.onSaveInteracted()
+        presenter!!.onSaveOrUpdateInteracted()
         verify(view).showErrorMessage(context.getString(R.string.please) + " " + context.getString(R.string.phone_hint))
 
     }
@@ -63,7 +63,7 @@ class EnterUserDetailsPresenterTest {
         `when`(view.getEmail()).thenReturn("123@gmail.com")
         `when`(view.getPhoneNumber()).thenReturn("+919567688334")
         `when`(userDataBase.getDataAccess()).thenReturn(mock(DataAccess::class.java))
-        presenter!!.onSaveInteracted()
+        presenter!!.onSaveOrUpdateInteracted()
         verify(view).navigateToList()
     }
 

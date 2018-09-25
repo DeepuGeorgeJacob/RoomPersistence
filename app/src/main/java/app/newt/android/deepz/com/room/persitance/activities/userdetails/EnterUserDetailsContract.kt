@@ -13,6 +13,6 @@ interface EnterUserDetailsContract {
     }
 
     interface Presenter : BasePresenter {
-        fun onSaveInteracted()
+        fun onSaveOrUpdateInteracted()
     }
 }

@@ -1,15 +1,12 @@
 package app.newt.android.deepz.com.room.persitance.activities.userdetails
 
-import android.arch.persistence.room.Room
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import app.newt.android.deepz.com.archetecture.mvp.context.MVPContext
 import app.newt.android.deepz.com.room.persitance.R
 import app.newt.android.deepz.com.room.persitance.activities.main.BaseActivity
-import app.newt.android.deepz.com.room.persitance.database.UserDataBase
+import kotlinx.android.synthetic.main.activity_enter_user_details.*
 
 class EnterUserDetailsActivity : BaseActivity(), EnterUserDetailsContract.View {
 
@@ -24,8 +21,8 @@ class EnterUserDetailsActivity : BaseActivity(), EnterUserDetailsContract.View {
        nameView =  findViewById(R.id.name_edit_text)
         emailView = findViewById(R.id.email_edit_text)
         phoneNumberView = findViewById(R.id.phone_number_edit_text)
-        findViewById<Button>(R.id.save).setOnClickListener {
-            presenter.onSaveInteracted()
+        save.setOnClickListener {
+            presenter.onSaveOrUpdateInteracted()
         }
         EnterUserDetailsPresenter(this, MVPContext(this), getDataBase()).start()
     }
@@ -46,7 +43,7 @@ class EnterUserDetailsActivity : BaseActivity(), EnterUserDetailsContract.View {
         return phoneNumberView.text.toString()
     }
     override fun navigateToList() {
-
+        this.assets
     }
 
     override fun showErrorMessage(error: String) {

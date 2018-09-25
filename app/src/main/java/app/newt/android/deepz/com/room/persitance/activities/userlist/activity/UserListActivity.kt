@@ -1,11 +1,13 @@
 package app.newt.android.deepz.com.room.persitance.activities.userlist.activity
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import app.newt.android.deepz.com.archetecture.mvp.context.MVPContext
 import app.newt.android.deepz.com.room.persitance.R
 import app.newt.android.deepz.com.room.persitance.activities.main.BaseActivity
+import app.newt.android.deepz.com.room.persitance.activities.userdetails.EnterUserDetailsActivity
 import app.newt.android.deepz.com.room.persitance.activities.userlist.activity.UserListContract.View
 import app.newt.android.deepz.com.room.persitance.activities.userlist.adapter.UserItemAdapter
 import app.newt.android.deepz.com.room.persitance.entities.User
@@ -19,8 +21,9 @@ class UserListActivity : BaseActivity(), View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_list)
         user_list.layoutManager = LinearLayoutManager(this)
-        UserListPresenter(this, getDataBase(),MVPContext(this)).start()
+        UserListPresenter(this, getDataBase(), MVPContext(this)).start()
     }
+
     override fun updateAdapter(user: User) {
         runOnUiThread {
             adapter.removeDeletedUser(user)
@@ -33,16 +36,23 @@ class UserListActivity : BaseActivity(), View {
             user_list.adapter = adapter
             adapter.setClickListener(object : UserItemAdapter.ItemClickListener {
                 override fun selectedItem(user: User?) {
-                   presenter.userItemSelected(user!!)
+                    presenter.userItemSelected(user!!)
                 }
             })
 
         }
     }
+
     override fun showEditDeleteDialog(user: User, title: String, body: String, editButtonText: String, deleteButtonText: String) {
         showDialog(title, body, editButtonText, deleteButtonText, DialogInterface.OnClickListener { _, _
             ->
             dismissDialog()
+            val intent = Intent(this, EnterUserDetailsActivity::class.java)
+            val bundle = Bundle()
+            bundle.putString("TYPE", "EDIT")
+            bundle.putLong("ID", user.id!!)
+            intent.putExtra("BUNDLE", bundle)
+            startActivity(intent)
         }, DialogInterface.OnClickListener { _, _
             ->
             presenter.deleteUser(user)
